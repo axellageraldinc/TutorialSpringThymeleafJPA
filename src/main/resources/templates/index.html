@@ -7,5 +7,21 @@
 </head>
 <body>
 <h1 th:text="'Message : ' + ${message}"/>
+<table border="1">
+    <thead>
+        <td>ID</td>
+        <td>NAMA</td>
+        <td>ALAMAT</td>
+    </thead>
+    <tbody>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td th:text="${user.id}"/>
+                <td th:text="${user.nama}"/>
+                <td th:text="${user.alamat}"/>
+            </tr>
+        </th:block>
+    </tbody>
+</table>
 </body>
 </html>
