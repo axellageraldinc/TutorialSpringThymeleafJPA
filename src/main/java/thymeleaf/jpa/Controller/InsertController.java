@@ -3,6 +3,7 @@ package thymeleaf.jpa.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,13 @@ public class InsertController {
     @Qualifier("dataSource")
     @Autowired
     DataSource dataSource;
+
+    @GetMapping(value = "/insert", produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView getInsertView(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("insert");
+        return mav;
+    }
 
     @PostMapping(value = "/insert-data", produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView doInsert(@ModelAttribute("user")User user){
