@@ -25,4 +25,18 @@ public class IndexController {
         mav.addObject("users", users);
         return mav;
     }
+
+    @GetMapping(value = "/name", produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView name(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("index");
+        List<User> usersByName = userRepository.findByNama("Kempl");
+        for (User user: usersByName
+             ) {
+            System.out.println("ID : " + user.getId());
+            System.out.println("NAMA : " + user.getNama());
+            System.out.println("ALAMAT : " + user.getAlamat());
+        }
+        return mav;
+    }
 }
